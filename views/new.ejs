@@ -2,26 +2,27 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Cadastro de Cliente</title>
+        <title><%=title%></title>
     </head>
 
     <body>
-        <h1>Cadastro de Cliente</h1>
+        <h1><%=title%></h1>
         <p>Preencha os dados abaixo para salvar o cliente.</p>
 
         <form action="<%=action %>" method="POST">
 
-            <p><label>Nome: <input type="text" name="nome"></label></p>
-            <p><label>Idade: <input type="number" name="idade"></label></p>
+            <p><label>Nome: <input type="text" name="nome" value="<%= docs.nome%>"></label></p>
+            <p><label>Idade: <input type="number" name="idade", value="<%= docs.idade%>"></label></p>
             <p><label>UF: 
                 <select name="uf">
-                    <option>AC</option>
-                    <option>AL</option>
-                    <option>AM</option>
-                    <option>AP</option>
-                    <option>BA</option>
-                    <option>CE</option>
-                    <option>DF</option>
+                    <% const s = "select"%>
+                    <option <% if(docs.uf=='AC'){%><%=s%><%}%>>AC</option>
+                    <option <% if(docs.uf=='AL'){%><%=s%><%}%>>AL</option>
+                    <option <% if(docs.uf=='AM'){%><%=s%><%}%>>AM</option>
+                    <option <% if(docs.uf=='AP'){%><%=s%><%}%>>AP</option>
+                    <option <% if(docs.uf=='BA'){%><%=s%><%}%>>BA</option>
+                    <option <% if(docs.uf=='CE'){%><%=s%><%}%>>CE</option>
+                    <option <% if(docs.uf=='DF'){%><%=s%><%}%>>DF</option>
                     <option>ES</option>
                     <option>GO</option>
                     <option>MA</option>
