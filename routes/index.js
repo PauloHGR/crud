@@ -9,4 +9,12 @@ router.get('/', function(req, res, next) {
   })
 });
 
+router.get('/delete/:id', function(req, res, next){
+  const id = req.params.id;
+  global.db.deleteOne(id, (e, result) => {
+    if(e){return console.log(e);}
+    res.redirect('/?delete=true');
+  });
+})
+
 module.exports = router;

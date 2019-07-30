@@ -23,4 +23,15 @@ router.get('/edit/:id', function(req, res, next){
     });
 })
 
+router.post('/edit/:id', function(req, res, next){
+    const id = req.params.id;
+    const nome = req.body.nome;
+    const idade = parseInt(req.body.idade);
+    const uf = req.body.uf;
+    global.db.update(id, {nome, idade, uf}, (e, result) => {
+        if(e) {return console.log(e);}
+        res.redirect('/?edit=true');
+    });
+})
+
 module.exports = router;

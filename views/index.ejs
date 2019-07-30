@@ -4,6 +4,15 @@
     <meta charset="utf-8"/>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script>
+      if(location.href.indexOf('delete=true')!= -1){
+        alert('Cliente Excluido com Sucesso!');
+      } else if(location.href.indexOf('edit=true')!= -1){
+        alert('Cliente Alterado com Sucesso!');
+      } else if(location.href.indexOf('new=true')!= -1){
+        alert('Cliente Cadastrado com Sucesso!');
+      }
+    </script>
   </head>
   <body>
     <h1><%= title %></h1>
@@ -14,7 +23,7 @@
         <td><b>Nome</b></td>
         <td><b>Idade</b></td>
         <td><b>UF</b></td>
-        <td><b>Ações</b></td>
+        <td style="width: 20%"><b>Ações</b></td>
       </tr>
 
       <% if(!docs || docs.length == 0) { %>
@@ -28,6 +37,7 @@
             <td style="width: 15%"><%= customer.idade %></td>
             <td style="width: 15%"><%= customer.uf %></td>
             <td><a href="/new/edit/<%= customer._id %>">Editar</a></td>
+            <td><a href="/delete/<%= customer._id %>" onclick="return confirm('Tem certeza que deseja excluir o usuário?');">Excluir</a></td>
           </tr>
         <%})
       }%>
